@@ -1,177 +1,1229 @@
-PropuestaIA
-Cómo funciona
-Demo gratis
-Precios
-FAQ
-Prueba gratis →
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>PropuestaIA — Propuestas comerciales profesionales en 30 segundos</title>
+<meta name="description" content="Genera propuestas comerciales irresistibles con IA. Cierra más contratos en menos tiempo. Usado por +1.200 agencias y freelancers en España."/>
+<style>
+/* System fonts fallback — no external dependencies */
+</style>
+<style>
+/* ── RESET & BASE ───────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  background:#050a05;
+  color:#e8f0e8;
+  overflow-x:hidden;
+  line-height:1.6;
+}
+:root{
+  --green:#00e676;
+  --green-dim:#00c853;
+  --green-dark:#004d20;
+  --green-pale:rgba(0,230,118,0.08);
+  --green-glow:rgba(0,230,118,0.15);
+  --surface:#0d1a0d;
+  --surface2:#111f11;
+  --border:rgba(0,230,118,0.12);
+  --border-bright:rgba(0,230,118,0.3);
+  --text:#e8f0e8;
+  --muted:#7a9a7a;
+  --radius:12px;
+  --radius-lg:20px;
+}
 
+/* ── NOISE OVERLAY ───────────────────────────────────── */
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;opacity:.4;
+}
 
-IA PARA COMERCIALES Y AGENCIAS
-Cierra más contratos. Sin perder horas escribiendo propuestas.
-PropuestaIA genera propuestas comerciales irresistibles en 30 segundos. Tú solo introduces los datos del cliente. La IA hace el resto.
-✦ Generar mi primera propuesta
-Ver cómo funciona
-+1.200
-profesionales activos
-30 seg
-por propuesta
-3,4×
-más cierres de media
-97%
-satisfacción
-USADO POR PROFESIONALES DE TODA ESPAÑA
-AGENCIAS MARKETING
-FREELANCERS
-CONSULTORAS
-DISEÑADORES
-DESARROLLADORES
-ASESORES B2B
-EL PROBLEMA REAL
-Cada propuesta que tardas en escribir es dinero perdido.
-Los mejores comerciales no pierden el tiempo redactando. Saben que la velocidad de respuesta y la personalización son lo que cierra contratos.
-⏱️
-3-6 horas por propuesta
-Un comercial medio dedica hasta 6 horas a redactar una sola propuesta. Tiempo que podría invertir en llamadas o cierres.
-😓
-Propuestas genéricas que no convierten
-Sin tiempo para personalizar, mandas la misma plantilla a todos. El cliente lo nota y elige a quien sí se ha esforzado.
-🐌
-El que responde primero, gana
-El 78% de los contratos los gana quien manda la propuesta primero. Si tardas 3 días, tu competidor ya firmó.
-💸
-Oportunidades que se pierden
-Cuantas más horas en redactar, menos tiempo para prospectar. Un embotellamiento constante que frena tu crecimiento.
-CÓMO FUNCIONA
-De cero a propuesta enviada en menos de 1 minuto.
-01
-Introduces los datos
-Nombre del cliente, sector, su problema principal y el servicio que quieres ofrecer. 4 campos. 60 segundos.
-02
-La IA redacta
-Nuestro motor de IA genera una propuesta completamente personalizada, con el diagnóstico del cliente, la solución y la inversión.
-03
-Revisas y ajustas
-Copia el texto, ajusta lo que quieras y envía. O descárgala directamente en Word o PDF lista para firmar.
-04
-Cierras el contrato
-El cliente recibe una propuesta profesional, personalizada y a tiempo. Tu tasa de cierre se multiplica. Tú cobras.
-DEMO INTERACTIVA · GRATIS
-Pruébalo ahora mismo. Sin registro.
-Rellena los datos y genera una propuesta real con IA en 30 segundos.
+/* ── NAV ─────────────────────────────────────────────── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 2rem;
+  background:rgba(5,10,5,0.85);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  font-weight:800;font-size:1.2rem;
+  color:var(--green);
+  letter-spacing:-0.02em;
+}
+.nav-logo span{color:var(--text)}
+.nav-links{display:flex;align-items:center;gap:2rem}
+.nav-links a{
+  font-size:13px;font-weight:500;
+  color:var(--muted);text-decoration:none;
+  transition:color .2s;
+}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  font-size:13px;font-weight:700;
+  padding:8px 20px;
+  background:var(--green);color:#050a05;
+  border:none;border-radius:8px;
+  cursor:pointer;text-decoration:none;
+  transition:background .2s,transform .1s;
+  display:inline-block;
+}
+.nav-cta:hover{background:#00ff7f}
+.nav-cta:active{transform:scale(.97)}
 
+/* ── HERO ────────────────────────────────────────────── */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;
+  padding:120px 1.5rem 80px;
+  position:relative;
+  z-index:1;
+}
+.hero-glow{
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-60%);
+  width:700px;height:500px;
+  background:radial-gradient(ellipse at center, rgba(0,230,118,0.12) 0%, transparent 70%);
+  pointer-events:none;
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--green);
+  background:var(--green-pale);
+  border:1px solid var(--border-bright);
+  padding:6px 16px;border-radius:100px;
+  margin-bottom:1.5rem;
+}
+.eyebrow-dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+h1{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  font-size:clamp(2.8rem,7vw,5.5rem);
+  font-weight:800;
+  line-height:1.0;
+  letter-spacing:-0.04em;
+  margin-bottom:1.5rem;
+  max-width:900px;
+}
+h1 em{
+  font-style:normal;
+  color:var(--green);
+  position:relative;
+}
+h1 em::after{
+  content:'';
+  position:absolute;
+  bottom:-4px;left:0;right:0;height:3px;
+  background:var(--green);
+  border-radius:2px;
+  opacity:.4;
+}
+.hero-sub{
+  font-size:clamp(1rem,2.5vw,1.2rem);
+  color:var(--muted);
+  max-width:560px;
+  margin-bottom:2.5rem;
+  line-height:1.7;
+}
+.hero-btns{
+  display:flex;gap:1rem;align-items:center;
+  flex-wrap:wrap;justify-content:center;
+  margin-bottom:3rem;
+}
+.btn-primary{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  font-size:15px;font-weight:700;
+  padding:14px 32px;
+  background:var(--green);color:#050a05;
+  border:none;border-radius:10px;
+  cursor:pointer;text-decoration:none;
+  display:inline-flex;align-items:center;gap:8px;
+  transition:all .2s;
+}
+.btn-primary:hover{background:#00ff7f;transform:translateY(-1px)}
+.btn-secondary{
+  font-size:14px;font-weight:500;
+  padding:13px 24px;
+  background:transparent;color:var(--muted);
+  border:1px solid var(--border-bright);
+  border-radius:10px;cursor:pointer;
+  text-decoration:none;
+  transition:all .2s;
+}
+.btn-secondary:hover{color:var(--text);border-color:rgba(0,230,118,.5)}
+.hero-stats{
+  display:flex;gap:3rem;
+  flex-wrap:wrap;justify-content:center;
+}
+.stat{text-align:center}
+.stat-n{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  font-size:2rem;font-weight:800;
+  color:var(--green);
+  display:block;
+}
+.stat-l{font-size:12px;color:var(--muted);font-weight:500}
 
+/* ── LOGOS ───────────────────────────────────────────── */
+.logos-strip{
+  padding:2.5rem 2rem;
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  text-align:center;
+  position:relative;z-index:1;
+}
+.logos-label{font-size:11px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.5rem;font-weight:600}
+.logos-row{
+  display:flex;align-items:center;justify-content:center;
+  gap:3rem;flex-wrap:wrap;
+}
+.logo-item{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  font-size:14px;font-weight:700;
+  color:rgba(122,154,122,0.5);
+  letter-spacing:.05em;
+}
 
-PropuestaIA · Generador
-TU EMPRESA
+/* ── PROBLEM SECTION ─────────────────────────────────── */
+.section{
+  padding:100px 1.5rem;
+  max-width:1100px;
+  margin:0 auto;
+  position:relative;z-index:1;
+}
+.section-label{
+  font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--green);margin-bottom:1rem;
+}
+h2{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  font-size:clamp(2rem,5vw,3.2rem);
+  font-weight:800;
+  line-height:1.1;
+  letter-spacing:-0.03em;
+  margin-bottom:1.5rem;
+}
+.pain-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:1.5rem;
+  margin-top:3rem;
+}
+.pain-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:1.5rem;
+  display:flex;gap:1rem;
+  align-items:flex-start;
+  transition:border-color .2s;
+}
+.pain-card:hover{border-color:var(--border-bright)}
+.pain-icon{
+  font-size:24px;
+  flex-shrink:0;
+  width:44px;height:44px;
+  background:var(--green-pale);
+  border:1px solid var(--border);
+  border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+}
+.pain-card h3{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  font-size:15px;font-weight:700;
+  margin-bottom:4px;color:var(--text);
+}
+.pain-card p{font-size:13px;color:var(--muted);line-height:1.6}
 
-TU NOMBRE
+/* ── HOW IT WORKS ────────────────────────────────────── */
+.how-section{
+  padding:100px 1.5rem;
+  background:var(--surface);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  position:relative;z-index:1;
+}
+.how-inner{max-width:1100px;margin:0 auto}
+.steps-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:0;
+  margin-top:3rem;
+  position:relative;
+}
+.step{
+  padding:2rem;
+  position:relative;
+  border-right:1px solid var(--border);
+}
+.step:last-child{border-right:none}
+.step-num{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  font-size:3.5rem;font-weight:800;
+  color:rgba(0,230,118,0.12);
+  line-height:1;
+  margin-bottom:.75rem;
+}
+.step h3{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  font-size:16px;font-weight:700;
+  margin-bottom:.5rem;
+  color:var(--text);
+}
+.step p{font-size:13px;color:var(--muted);line-height:1.6}
 
-EMPRESA CLIENTE
+/* ── DEMO SECTION ────────────────────────────────────── */
+.demo-section{
+  padding:100px 1.5rem;
+  position:relative;z-index:1;
+}
+.demo-inner{
+  max-width:900px;margin:0 auto;
+  text-align:center;
+}
+.demo-wrap{
+  margin-top:3rem;
+  background:var(--surface);
+  border:1px solid var(--border-bright);
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  box-shadow:0 0 80px rgba(0,230,118,0.06);
+}
+.demo-topbar{
+  background:var(--surface2);
+  padding:.75rem 1rem;
+  display:flex;align-items:center;gap:.5rem;
+  border-bottom:1px solid var(--border);
+}
+.demo-dot{width:10px;height:10px;border-radius:50%}
+.d1{background:#ff5f57}.d2{background:#febc2e}.d3{background:#28c840}
+.demo-title{
+  flex:1;text-align:center;
+  font-size:12px;color:var(--muted);
+}
 
-SECTOR DEL CLIENTE
+/* ── DEMO FORM ───────────────────────────────────────── */
+.demo-body{padding:2rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.field{display:flex;flex-direction:column;gap:5px;text-align:left}
+.field label{font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.field input,.field textarea,.field select{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  font-size:14px;
+  padding:10px 14px;
+  background:var(--surface2);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  color:var(--text);
+  outline:none;
+  transition:border-color .15s;
+}
+.field input:focus,.field textarea:focus,.field select:focus{
+  border-color:var(--green);
+  background:rgba(0,230,118,0.03);
+}
+.field textarea{min-height:80px;resize:vertical;line-height:1.5}
+.field select option{background:#0d1a0d}
+.service-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;margin-bottom:1rem;
+}
+.svc-btn{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  font-size:12px;font-weight:600;
+  padding:9px 6px;
+  background:var(--surface2);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  color:var(--muted);
+  cursor:pointer;
+  transition:all .15s;
+}
+.svc-btn:hover{border-color:var(--border-bright);color:var(--text)}
+.svc-btn.active{
+  border-color:var(--green);
+  background:var(--green-pale);
+  color:var(--green);
+}
+.gen-btn{
+  width:100%;
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  font-size:15px;font-weight:700;
+  padding:14px;
+  background:var(--green);color:#050a05;
+  border:none;border-radius:var(--radius);
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  margin-top:.5rem;
+  transition:all .2s;
+}
+.gen-btn:hover{background:#00ff7f}
+.gen-btn:disabled{background:#2a4a2a;color:#3a6a3a;cursor:not-allowed}
+.result-box{
+  display:none;
+  margin-top:1.5rem;
+  background:var(--surface2);
+  border:1px solid var(--border-bright);
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+}
+.result-top{
+  background:rgba(0,230,118,0.08);
+  border-bottom:1px solid var(--border);
+  padding:.75rem 1.25rem;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.result-top span{font-size:13px;font-weight:600;color:var(--green)}
+.copy-btn{
+  font-size:12px;font-weight:600;
+  padding:5px 14px;
+  background:transparent;
+  border:1px solid var(--border-bright);
+  color:var(--green);
+  border-radius:8px;cursor:pointer;
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  transition:all .15s;
+}
+.copy-btn:hover{background:var(--green-pale)}
+.result-text{
+  padding:1.25rem;
+  font-size:14px;line-height:1.8;
+  color:var(--text);
+  white-space:pre-wrap;
+  max-height:500px;
+  overflow-y:auto;
+}
+.loading-state{
+  display:none;
+  padding:2rem;
+  text-align:center;color:var(--muted);font-size:14px;
+}
+.spinner{
+  width:32px;height:32px;
+  border:3px solid rgba(0,230,118,0.15);
+  border-top-color:var(--green);
+  border-radius:50%;
+  animation:spin .7s linear infinite;
+  margin:0 auto 12px;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
 
-NECESIDAD O PROBLEMA DEL CLIENTE
-SERVICIO QUE VAS A OFRECER
-📱 Redes Sociales
-💻 Desarrollo Web
-📊 Consultoría
-🎨 Diseño / Branding
-🔍 SEO
-📣 Publicidad
-PRECIO (€)
+/* ── FEATURES ────────────────────────────────────────── */
+.features-section{
+  padding:100px 1.5rem;
+  background:var(--surface);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  position:relative;z-index:1;
+}
+.features-inner{max-width:1100px;margin:0 auto}
+.features-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:1.5rem;
+  margin-top:3rem;
+}
+.feat-card{
+  padding:1.75rem;
+  background:#050a05;
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  transition:border-color .2s,transform .2s;
+}
+.feat-card:hover{
+  border-color:var(--border-bright);
+  transform:translateY(-3px);
+}
+.feat-icon{
+  font-size:28px;margin-bottom:1rem;
+  display:block;
+}
+.feat-card h3{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  font-size:16px;font-weight:700;
+  margin-bottom:.5rem;color:var(--text);
+}
+.feat-card p{font-size:13px;color:var(--muted);line-height:1.6}
 
-MODALIDAD
-              Suscripción mensual
-              Pago único
-              Por proyecto
-            
-✦ Generar propuesta con IA
-¿Te ha gustado? Accede a propuestas ilimitadas por 49€/mes →
-TODO LO QUE INCLUYE
-No es solo un generador. Es tu comercial de IA.
-🧠
-IA que entiende tu negocio
-No genera texto genérico. Analiza el sector del cliente, su problema y tu servicio para crear una propuesta que suena humana y personal.
-⚡
-30 segundos, no 3 horas
-Genera propuestas completas con diagnóstico, solución, precio y llamada a la acción en segundos. Listo para enviar.
-📄
-Exporta en PDF y Word
-Con un clic descarga tu propuesta en formato profesional listo para enviar por email o imprimir y llevar a la reunión.
-🎨
-Plantillas por sector
-Plantillas optimizadas para agencias, freelancers, consultoras, inmobiliarias, clínicas, despachos y más de 20 sectores.
-📊
-Historial de propuestas
-Guarda todas tus propuestas, duplícalas con un clic y adapta versiones anteriores para nuevos clientes en segundos.
-🌍
-Multiidioma
-Genera propuestas en español, inglés, francés, portugués o catalán. Perfecto si trabajas con clientes internacionales.
-LO QUE DICEN NUESTROS CLIENTES
-Resultados reales de profesionales reales.
-★★★★★
-"Antes tardaba entre 2 y 4 horas en cada propuesta. Ahora en 3 minutos tengo algo mejor de lo que hacía antes. En el primer mes cerré 4 clientes nuevos que antes hubiera perdido por no llegar a tiempo."
-MR
-Miguel Ruiz
-Freelance diseñador, Valencia
-★★★★★
-"Llevamos 3 meses usándolo en la agencia para todo el equipo. Hemos multiplicado por 2 el número de propuestas que mandamos al mes y nuestra tasa de cierre ha subido del 18% al 31%."
-AL
-Ana Llorente
-Directora, Agencia Creatia Madrid
-★★★★★
-"El ROI es ridículo. Pago 49€ al mes y en el primer cliente que cierro por la propuesta ya he recuperado 10 veces la inversión. No entiendo cómo trabajaba antes sin esto."
-JC
-Jordi Casas
-Consultor SEO, Barcelona
-PRECIOS SIMPLES Y SIN LETRA PEQUEÑA
-Empieza gratis. Escala cuando quieras.
-Sin permanencias. Cancela cuando quieras. 14 días de prueba gratuita en todos los planes.
-STARTER
-Gratis
-Para probar y evaluar
+/* ── TESTIMONIALS ────────────────────────────────────── */
+.testi-section{
+  padding:100px 1.5rem;
+  position:relative;z-index:1;
+}
+.testi-inner{max-width:1100px;margin:0 auto}
+.testi-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:1.5rem;
+  margin-top:3rem;
+}
+.testi-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:1.75rem;
+  transition:border-color .2s;
+}
+.testi-card:hover{border-color:var(--border-bright)}
+.stars{color:var(--green);font-size:14px;margin-bottom:1rem;letter-spacing:2px}
+.testi-card blockquote{
+  font-size:14px;color:var(--text);
+  line-height:1.7;
+  margin-bottom:1.25rem;
+  font-style:italic;
+}
+.testi-author{display:flex;align-items:center;gap:.75rem}
+.testi-avatar{
+  width:38px;height:38px;border-radius:50%;
+  background:var(--green-dark);
+  border:1px solid var(--border-bright);
+  display:flex;align-items:center;justify-content:center;
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  font-size:13px;font-weight:700;
+  color:var(--green);
+  flex-shrink:0;
+}
+.testi-name{font-size:13px;font-weight:600;color:var(--text)}
+.testi-role{font-size:11px;color:var(--muted)}
 
-		5 propuestas al mes Todos los sectores Copia en texto Exportar PDF/Word Historial guardado Plantillas premium
-Empezar gratis
-⚡ Más popular
-PRO
-49€/mes
-Para freelancers y comerciales
+/* ── PRICING ─────────────────────────────────────────── */
+.pricing-section{
+  padding:100px 1.5rem;
+  background:var(--surface);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  position:relative;z-index:1;
+}
+.pricing-inner{
+  max-width:960px;margin:0 auto;text-align:center;
+}
+.pricing-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:1.5rem;
+  margin-top:3rem;
+  text-align:left;
+}
+.plan-card{
+  background:#050a05;
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:2rem;
+  position:relative;
+  transition:border-color .2s;
+}
+.plan-card:hover{border-color:var(--border-bright)}
+.plan-card.featured{
+  border:2px solid var(--green);
+  box-shadow:0 0 60px rgba(0,230,118,0.08);
+}
+.popular-badge{
+  position:absolute;
+  top:-12px;left:50%;transform:translateX(-50%);
+  background:var(--green);color:#050a05;
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  font-size:11px;font-weight:700;
+  padding:4px 16px;border-radius:100px;
+  white-space:nowrap;
+}
+.plan-name{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:.75rem;
+}
+.plan-price{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  font-size:3rem;font-weight:800;
+  color:var(--text);line-height:1;
+  margin-bottom:.25rem;
+}
+.plan-price span{font-size:1rem;font-weight:400;color:var(--muted)}
+.plan-desc{font-size:13px;color:var(--muted);margin-bottom:1.5rem}
+.plan-divider{height:1px;background:var(--border);margin-bottom:1.5rem}
+.plan-features{list-style:none;display:flex;flex-direction:column;gap:.75rem;margin-bottom:2rem}
+.plan-features li{
+  display:flex;align-items:flex-start;gap:8px;
+  font-size:13px;color:var(--text);
+}
+.plan-features li::before{
+  content:'✓';
+  color:var(--green);font-weight:700;
+  flex-shrink:0;margin-top:1px;
+}
+.plan-features li.off::before{content:'—';color:var(--muted)}
+.plan-features li.off{color:var(--muted)}
+.plan-btn{
+  width:100%;
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  font-size:14px;font-weight:700;
+  padding:13px;
+  border-radius:var(--radius);
+  cursor:pointer;
+  border:1px solid var(--border-bright);
+  background:transparent;
+  color:var(--text);
+  transition:all .2s;
+  text-align:center;
+  display:block;text-decoration:none;
+}
+.plan-btn:hover{background:var(--green-pale);border-color:var(--green)}
+.plan-btn.primary{
+  background:var(--green);color:#050a05;border-color:var(--green);
+}
+.plan-btn.primary:hover{background:#00ff7f}
+.plan-note{
+  margin-top:1rem;
+  font-size:12px;color:var(--muted);text-align:center;
+}
 
-		Propuestas ilimitadas Todos los sectores Exportar PDF y Word Historial completo Plantillas premium (20+) Múltiples usuarios
-Empezar 14 días gratis
-Después 49€/mes · Cancela cuando quieras
-AGENCIA
-129€/mes
-Para equipos y agencias
+/* ── FAQ ─────────────────────────────────────────────── */
+.faq-section{
+  padding:100px 1.5rem;
+  position:relative;z-index:1;
+}
+.faq-inner{max-width:700px;margin:0 auto}
+.faq-list{margin-top:3rem;display:flex;flex-direction:column;gap:.75rem}
+.faq-item{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  overflow:hidden;
+  transition:border-color .2s;
+}
+.faq-item:hover{border-color:var(--border-bright)}
+.faq-q{
+  width:100%;background:none;border:none;
+  padding:1.25rem 1.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+  cursor:pointer;
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;font-size:14px;font-weight:700;
+  color:var(--text);text-align:left;gap:1rem;
+}
+.faq-arrow{
+  color:var(--green);font-size:18px;flex-shrink:0;
+  transition:transform .2s;
+}
+.faq-item.open .faq-arrow{transform:rotate(45deg)}
+.faq-a{
+  display:none;
+  padding:0 1.5rem 1.25rem;
+  font-size:14px;color:var(--muted);line-height:1.7;
+}
+.faq-item.open .faq-a{display:block}
 
-		Propuestas ilimitadas Hasta 5 usuarios Exportar PDF y Word Historial y analíticas Plantillas con tu logo Soporte prioritario
-Empezar 14 días gratis
-PREGUNTAS FRECUENTES
-Todo lo que necesitas saber.
-¿Las propuestas suenan robóticas o genéricas?
-+
-¿Puedo personalizar las propuestas que genera?
-+
-¿Funciona para mi sector aunque sea muy específico?
-+
-¿Hay permanencia o compromiso de tiempo?
-+
-¿Qué pasa con mis datos y los datos de mis clientes?
-+
-¿Puedo usarlo en el móvil?
-+
+/* ── CTA FINAL ───────────────────────────────────────── */
+.cta-section{
+  padding:120px 1.5rem;
+  position:relative;z-index:1;
+  text-align:center;
+}
+.cta-glow{
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:600px;height:400px;
+  background:radial-gradient(ellipse, rgba(0,230,118,0.1) 0%, transparent 70%);
+  pointer-events:none;
+}
+.cta-section h2{
+  font-size:clamp(2rem,5vw,3.5rem);
+  max-width:700px;margin:0 auto 1.5rem;
+}
+.cta-section p{
+  font-size:16px;color:var(--muted);
+  max-width:500px;margin:0 auto 2.5rem;
+}
+.cta-btns{
+  display:flex;gap:1rem;
+  justify-content:center;flex-wrap:wrap;
+}
+.cta-note{
+  margin-top:1rem;font-size:12px;color:var(--muted);
+}
 
-EMPIEZA HOY
-Tu próxima propuesta en 30 segundos.
-Únete a más de 1.200 profesionales que ya cierran más contratos con menos tiempo. 14 días de prueba gratis, sin tarjeta.
-✦ Generar mi primera propuesta gratis
-Ver planes y precios
-Sin tarjeta de crédito · Cancela cuando quieras · Soporte en español
-PropuestaIA
-Privacidad
-Términos
-RGPD
-Contacto
-Afiliados
-© 2025 PropuestaIA · Hecho en España 🇪🇸
+/* ── FOOTER ──────────────────────────────────────────── */
+footer{
+  padding:3rem 2rem;
+  border-top:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:1rem;
+  position:relative;z-index:1;
+}
+.footer-logo{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  font-weight:800;font-size:1.1rem;
+  color:var(--green);
+}
+.footer-links{display:flex;gap:2rem;flex-wrap:wrap}
+.footer-links a{
+  font-size:13px;color:var(--muted);text-decoration:none;
+  transition:color .2s;
+}
+.footer-links a:hover{color:var(--text)}
+.footer-copy{font-size:12px;color:var(--muted)}
+
+/* ── ANIM FADE IN ─────────────────────────────────────── */
+.fade-up{
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity .6s ease, transform .6s ease;
+}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+/* ── MOBILE ──────────────────────────────────────────── */
+@media(max-width:700px){
+  .nav-links{display:none}
+  .form-row{grid-template-columns:1fr}
+  .service-grid{grid-template-columns:repeat(2,1fr)}
+  .steps-grid .step{border-right:none;border-bottom:1px solid var(--border);padding:1.5rem}
+  .steps-grid .step:last-child{border-bottom:none}
+  footer{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Propuesta<span>IA</span></div>
+  <div class="nav-links">
+    <a href="#como-funciona">Cómo funciona</a>
+    <a href="#demo">Demo gratis</a>
+    <a href="#precios">Precios</a>
+    <a href="#faq">FAQ</a>
+  </div>
+  <a href="#demo" class="nav-cta">Prueba gratis →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="eyebrow"><span class="eyebrow-dot"></span>IA para comerciales y agencias</div>
+  <h1>Cierra más contratos.<br/><em>Sin perder horas</em><br/>escribiendo propuestas.</h1>
+  <p class="hero-sub">PropuestaIA genera propuestas comerciales irresistibles en 30 segundos. Tú solo introduces los datos del cliente. La IA hace el resto.</p>
+  <div class="hero-btns">
+    <a href="#demo" class="btn-primary">✦ Generar mi primera propuesta</a>
+    <a href="#como-funciona" class="btn-secondary">Ver cómo funciona</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><span class="stat-n">+1.200</span><span class="stat-l">profesionales activos</span></div>
+    <div class="stat"><span class="stat-n">30 seg</span><span class="stat-l">por propuesta</span></div>
+    <div class="stat"><span class="stat-n">3,4×</span><span class="stat-l">más cierres de media</span></div>
+    <div class="stat"><span class="stat-n">97%</span><span class="stat-l">satisfacción</span></div>
+  </div>
+</section>
+
+<!-- LOGOS -->
+<div class="logos-strip">
+  <div class="logos-label">Usado por profesionales de toda España</div>
+  <div class="logos-row">
+    <span class="logo-item">AGENCIAS MARKETING</span>
+    <span class="logo-item">FREELANCERS</span>
+    <span class="logo-item">CONSULTORAS</span>
+    <span class="logo-item">DISEÑADORES</span>
+    <span class="logo-item">DESARROLLADORES</span>
+    <span class="logo-item">ASESORES B2B</span>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="section fade-up">
+  <div class="section-label">El problema real</div>
+  <h2>Cada propuesta que tardas<br/>en escribir es dinero perdido.</h2>
+  <p style="color:var(--muted);font-size:16px;max-width:560px">Los mejores comerciales no pierden el tiempo redactando. Saben que la velocidad de respuesta y la personalización son lo que cierra contratos.</p>
+  <div class="pain-grid">
+    <div class="pain-card">
+      <div class="pain-icon">⏱️</div>
+      <div>
+        <h3>3-6 horas por propuesta</h3>
+        <p>Un comercial medio dedica hasta 6 horas a redactar una sola propuesta. Tiempo que podría invertir en llamadas o cierres.</p>
+      </div>
+    </div>
+    <div class="pain-card">
+      <div class="pain-icon">😓</div>
+      <div>
+        <h3>Propuestas genéricas que no convierten</h3>
+        <p>Sin tiempo para personalizar, mandas la misma plantilla a todos. El cliente lo nota y elige a quien sí se ha esforzado.</p>
+      </div>
+    </div>
+    <div class="pain-card">
+      <div class="pain-icon">🐌</div>
+      <div>
+        <h3>El que responde primero, gana</h3>
+        <p>El 78% de los contratos los gana quien manda la propuesta primero. Si tardas 3 días, tu competidor ya firmó.</p>
+      </div>
+    </div>
+    <div class="pain-card">
+      <div class="pain-icon">💸</div>
+      <div>
+        <h3>Oportunidades que se pierden</h3>
+        <p>Cuantas más horas en redactar, menos tiempo para prospectar. Un embotellamiento constante que frena tu crecimiento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="como-funciona">
+  <div class="how-inner">
+    <div class="section-label">Cómo funciona</div>
+    <h2>De cero a propuesta enviada<br/>en menos de 1 minuto.</h2>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Introduces los datos</h3>
+        <p>Nombre del cliente, sector, su problema principal y el servicio que quieres ofrecer. 4 campos. 60 segundos.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>La IA redacta</h3>
+        <p>Nuestro motor de IA genera una propuesta completamente personalizada, con el diagnóstico del cliente, la solución y la inversión.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Revisas y ajustas</h3>
+        <p>Copia el texto, ajusta lo que quieras y envía. O descárgala directamente en Word o PDF lista para firmar.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h3>Cierras el contrato</h3>
+        <p>El cliente recibe una propuesta profesional, personalizada y a tiempo. Tu tasa de cierre se multiplica. Tú cobras.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO -->
+<section class="demo-section" id="demo">
+  <div class="demo-inner">
+    <div class="section-label">Demo interactiva · Gratis</div>
+    <h2>Pruébalo ahora mismo.<br/>Sin registro.</h2>
+    <p style="color:var(--muted);font-size:15px;margin-top:.5rem">Rellena los datos y genera una propuesta real con IA en 30 segundos.</p>
+    <div class="demo-wrap">
+      <div class="demo-topbar">
+        <div class="demo-dot d1"></div>
+        <div class="demo-dot d2"></div>
+        <div class="demo-dot d3"></div>
+        <div class="demo-title">PropuestaIA · Generador</div>
+      </div>
+      <div class="demo-body">
+        <div class="form-row">
+          <div class="field">
+            <label>Tu empresa</label>
+            <input id="d-myco" type="text" placeholder="Ej: Agencia Norte"/>
+          </div>
+          <div class="field">
+            <label>Tu nombre</label>
+            <input id="d-myname" type="text" placeholder="Ej: Laura García"/>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label>Empresa cliente</label>
+            <input id="d-client" type="text" placeholder="Ej: Restaurante La Brasa"/>
+          </div>
+          <div class="field">
+            <label>Sector del cliente</label>
+            <input id="d-sector" type="text" placeholder="Ej: Restauración"/>
+          </div>
+        </div>
+        <div class="field" style="margin-bottom:1rem">
+          <label>Necesidad o problema del cliente</label>
+          <textarea id="d-need" placeholder="Ej: No tienen presencia en redes y pierden clientes frente a competidores que sí la tienen..."></textarea>
+        </div>
+        <div class="field" style="margin-bottom:.5rem"><label>Servicio que vas a ofrecer</label></div>
+        <div class="service-grid">
+          <button class="svc-btn active" onclick="setSvc(this,'Marketing digital y redes sociales')">📱 Redes Sociales</button>
+          <button class="svc-btn" onclick="setSvc(this,'Desarrollo web y presencia online')">💻 Desarrollo Web</button>
+          <button class="svc-btn" onclick="setSvc(this,'Consultoría empresarial')">📊 Consultoría</button>
+          <button class="svc-btn" onclick="setSvc(this,'Diseño gráfico y branding')">🎨 Diseño / Branding</button>
+          <button class="svc-btn" onclick="setSvc(this,'SEO y posicionamiento web')">🔍 SEO</button>
+          <button class="svc-btn" onclick="setSvc(this,'Publicidad en Google y Meta Ads')">📣 Publicidad</button>
+        </div>
+        <div class="form-row" style="margin-top:1rem">
+          <div class="field">
+            <label>Precio (€)</label>
+            <input id="d-price" type="number" placeholder="499"/>
+          </div>
+          <div class="field">
+            <label>Modalidad</label>
+            <select id="d-mod">
+              <option value="mensual">Suscripción mensual</option>
+              <option value="pago único">Pago único</option>
+              <option value="por proyecto">Por proyecto</option>
+            </select>
+          </div>
+        </div>
+        <button class="gen-btn" id="genBtn" onclick="generate()">
+          ✦ Generar propuesta con IA
+        </button>
+        <div class="loading-state" id="loadBox">
+          <div class="spinner"></div>
+          Redactando tu propuesta personalizada…
+        </div>
+        <div class="result-box" id="resultBox">
+          <div class="result-top">
+            <span>✓ Propuesta lista</span>
+            <button class="copy-btn" onclick="copyText()">Copiar texto</button>
+          </div>
+          <div class="result-text" id="resultText"></div>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--muted);margin-top:1rem">
+      ¿Te ha gustado? <a href="#precios" style="color:var(--green);text-decoration:none">Accede a propuestas ilimitadas por 49€/mes →</a>
+    </p>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features-section" id="features">
+  <div class="features-inner">
+    <div class="section-label">Todo lo que incluye</div>
+    <h2>No es solo un generador.<br/>Es tu comercial de IA.</h2>
+    <div class="features-grid">
+      <div class="feat-card fade-up">
+        <span class="feat-icon">🧠</span>
+        <h3>IA que entiende tu negocio</h3>
+        <p>No genera texto genérico. Analiza el sector del cliente, su problema y tu servicio para crear una propuesta que suena humana y personal.</p>
+      </div>
+      <div class="feat-card fade-up">
+        <span class="feat-icon">⚡</span>
+        <h3>30 segundos, no 3 horas</h3>
+        <p>Genera propuestas completas con diagnóstico, solución, precio y llamada a la acción en segundos. Listo para enviar.</p>
+      </div>
+      <div class="feat-card fade-up">
+        <span class="feat-icon">📄</span>
+        <h3>Exporta en PDF y Word</h3>
+        <p>Con un clic descarga tu propuesta en formato profesional listo para enviar por email o imprimir y llevar a la reunión.</p>
+      </div>
+      <div class="feat-card fade-up">
+        <span class="feat-icon">🎨</span>
+        <h3>Plantillas por sector</h3>
+        <p>Plantillas optimizadas para agencias, freelancers, consultoras, inmobiliarias, clínicas, despachos y más de 20 sectores.</p>
+      </div>
+      <div class="feat-card fade-up">
+        <span class="feat-icon">📊</span>
+        <h3>Historial de propuestas</h3>
+        <p>Guarda todas tus propuestas, duplícalas con un clic y adapta versiones anteriores para nuevos clientes en segundos.</p>
+      </div>
+      <div class="feat-card fade-up">
+        <span class="feat-icon">🌍</span>
+        <h3>Multiidioma</h3>
+        <p>Genera propuestas en español, inglés, francés, portugués o catalán. Perfecto si trabajas con clientes internacionales.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi-section">
+  <div class="testi-inner">
+    <div class="section-label">Lo que dicen nuestros clientes</div>
+    <h2>Resultados reales<br/>de profesionales reales.</h2>
+    <div class="testi-grid">
+      <div class="testi-card fade-up">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Antes tardaba entre 2 y 4 horas en cada propuesta. Ahora en 3 minutos tengo algo mejor de lo que hacía antes. En el primer mes cerré 4 clientes nuevos que antes hubiera perdido por no llegar a tiempo."</blockquote>
+        <div class="testi-author">
+          <div class="testi-avatar">MR</div>
+          <div><div class="testi-name">Miguel Ruiz</div><div class="testi-role">Freelance diseñador, Valencia</div></div>
+        </div>
+      </div>
+      <div class="testi-card fade-up">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Llevamos 3 meses usándolo en la agencia para todo el equipo. Hemos multiplicado por 2 el número de propuestas que mandamos al mes y nuestra tasa de cierre ha subido del 18% al 31%."</blockquote>
+        <div class="testi-author">
+          <div class="testi-avatar">AL</div>
+          <div><div class="testi-name">Ana Llorente</div><div class="testi-role">Directora, Agencia Creatia Madrid</div></div>
+        </div>
+      </div>
+      <div class="testi-card fade-up">
+        <div class="stars">★★★★★</div>
+        <blockquote>"El ROI es ridículo. Pago 49€ al mes y en el primer cliente que cierro por la propuesta ya he recuperado 10 veces la inversión. No entiendo cómo trabajaba antes sin esto."</blockquote>
+        <div class="testi-author">
+          <div class="testi-avatar">JC</div>
+          <div><div class="testi-name">Jordi Casas</div><div class="testi-role">Consultor SEO, Barcelona</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section" id="precios">
+  <div class="pricing-inner">
+    <div class="section-label">Precios simples y sin letra pequeña</div>
+    <h2>Empieza gratis.<br/>Escala cuando quieras.</h2>
+    <p style="color:var(--muted);font-size:15px;margin-top:.5rem">Sin permanencias. Cancela cuando quieras. 14 días de prueba gratuita en todos los planes.</p>
+    <div class="pricing-grid">
+
+      <div class="plan-card">
+        <div class="plan-name">Starter</div>
+        <div class="plan-price">Gratis<span></span></div>
+        <div class="plan-desc">Para probar y evaluar</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li>5 propuestas al mes</li>
+          <li>Todos los sectores</li>
+          <li>Copia en texto</li>
+          <li class="off">Exportar PDF/Word</li>
+          <li class="off">Historial guardado</li>
+          <li class="off">Plantillas premium</li>
+        </ul>
+        <a href="#demo" class="plan-btn">Empezar gratis</a>
+      </div>
+
+      <div class="plan-card featured">
+        <div class="popular-badge">⚡ Más popular</div>
+        <div class="plan-name">Pro</div>
+        <div class="plan-price">49<span>€/mes</span></div>
+        <div class="plan-desc">Para freelancers y comerciales</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li>Propuestas ilimitadas</li>
+          <li>Todos los sectores</li>
+          <li>Exportar PDF y Word</li>
+          <li>Historial completo</li>
+          <li>Plantillas premium (20+)</li>
+          <li class="off">Múltiples usuarios</li>
+        </ul>
+        <a href="#" class="plan-btn primary" onclick="showCheckout()">Empezar 14 días gratis</a>
+        <div class="plan-note">Después 49€/mes · Cancela cuando quieras</div>
+      </div>
+
+      <div class="plan-card">
+        <div class="plan-name">Agencia</div>
+        <div class="plan-price">129<span>€/mes</span></div>
+        <div class="plan-desc">Para equipos y agencias</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li>Propuestas ilimitadas</li>
+          <li>Hasta 5 usuarios</li>
+          <li>Exportar PDF y Word</li>
+          <li>Historial y analíticas</li>
+          <li>Plantillas con tu logo</li>
+          <li>Soporte prioritario</li>
+        </ul>
+        <a href="#" class="plan-btn" onclick="showCheckout()">Empezar 14 días gratis</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="faq-inner">
+    <div class="section-label">Preguntas frecuentes</div>
+    <h2>Todo lo que necesitas saber.</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Las propuestas suenan robóticas o genéricas?
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-a">No. Nuestro motor de IA analiza el sector específico del cliente, su problema concreto y el servicio que ofreces para generar texto que suena personalizado y humano. De hecho, la mayoría de clientes no detectan que ha sido generado por IA.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Puedo personalizar las propuestas que genera?
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-a">Por supuesto. La IA genera el 90% del trabajo y tú ajustas el 10% restante. Puedes editar el texto directamente, cambiar el precio, añadir cláusulas específicas o adaptar el tono. Es tu punto de partida, no la versión final obligatoria.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Funciona para mi sector aunque sea muy específico?
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-a">Sí. PropuestaIA funciona para más de 40 sectores: agencias de marketing, desarrollo web, consultoría, inmobiliarias, clínicas, despachos de abogados, arquitectos, talleres, distribuidoras B2B y muchos más. Si introduces bien el contexto del cliente, la IA se adapta.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Hay permanencia o compromiso de tiempo?
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-a">Ninguno. Todos los planes son mensuales y puedes cancelar cuando quieras desde tu panel de control. Sin llamadas, sin formularios, sin letra pequeña. Si cancelas, mantienes el acceso hasta el final del período pagado.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Qué pasa con mis datos y los datos de mis clientes?
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-a">Tus datos son tuyos. No compartimos ni vendemos información de tus clientes a terceros. Todos los datos se almacenan con cifrado y solo tú tienes acceso a tu historial de propuestas. Cumplimos con el RGPD.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Puedo usarlo en el móvil?
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-a">Sí. PropuestaIA está completamente optimizado para móvil. Puedes generar una propuesta desde tu teléfono mientras estás en la reunión con el cliente o de camino a casa. En 30 segundos la tienes lista para enviar por WhatsApp o email.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-section">
+  <div class="cta-glow"></div>
+  <div class="section-label">Empieza hoy</div>
+  <h2>Tu próxima propuesta<br/>en 30 segundos.</h2>
+  <p>Únete a más de 1.200 profesionales que ya cierran más contratos con menos tiempo. 14 días de prueba gratis, sin tarjeta.</p>
+  <div class="cta-btns">
+    <a href="#demo" class="btn-primary">✦ Generar mi primera propuesta gratis</a>
+    <a href="#precios" class="btn-secondary">Ver planes y precios</a>
+  </div>
+  <div class="cta-note">Sin tarjeta de crédito · Cancela cuando quieras · Soporte en español</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">PropuestaIA</div>
+  <div class="footer-links">
+    <a href="#">Privacidad</a>
+    <a href="#">Términos</a>
+    <a href="#">RGPD</a>
+    <a href="#">Contacto</a>
+    <a href="#">Afiliados</a>
+  </div>
+  <div class="footer-copy">© 2025 PropuestaIA · Hecho en España 🇪🇸</div>
+</footer>
+
+<!-- SCRIPTS -->
+<script>
+/* ─── DEMO ──────────────────────────────────── */
+let svc = 'Marketing digital y redes sociales';
+function setSvc(btn, s) {
+  document.querySelectorAll('.svc-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  svc = s;
+}
+
+async function generate() {
+  const myco = document.getElementById('d-myco').value || 'Mi Empresa';
+  const myname = document.getElementById('d-myname').value || 'El equipo comercial';
+  const client = document.getElementById('d-client').value || 'el cliente';
+  const sector = document.getElementById('d-sector').value || 'su sector';
+  const need = document.getElementById('d-need').value || 'mejorar su presencia y resultados comerciales';
+  const price = document.getElementById('d-price').value || '499';
+  const mod = document.getElementById('d-mod').value;
+
+  const btn = document.getElementById('genBtn');
+  const load = document.getElementById('loadBox');
+  const res = document.getElementById('resultBox');
+
+  btn.disabled = true;
+  load.style.display = 'block';
+  res.style.display = 'none';
+
+  try {
+    const resp = await fetch('/api/generate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        messages: [{
+          role: 'user',
+          content: `Eres un experto redactor de propuestas comerciales B2B de alto nivel. Genera una propuesta COMPLETA, persuasiva y personalizada con tono profesional y cercano.
+
+Datos:
+- Empresa que ofrece: ${myco} (representada por ${myname})
+- Cliente: ${client} (sector: ${sector})
+- Problema del cliente: ${need}
+- Servicio: ${svc}
+- Precio: ${price}€ (${mod})
+
+Estructura obligatoria:
+1. Encabezado con fecha y referencia
+2. Saludo personalizado con nombre del cliente
+3. Diagnóstico: demuestra que entiendes su situación específica
+4. Nuestra propuesta: cómo solucionamos exactamente ese problema
+5. Entregables: 4-5 puntos concretos de lo que incluye
+6. Inversión: precio, modalidad y condiciones claras
+7. Por qué elegirnos: 2 razones de valor diferencial
+8. Próximos pasos: llamada a la acción clara y concreta
+9. Firma profesional de ${myname} en ${myco}
+
+Importante: sé muy concreto y específico para ${client} en el sector ${sector}. Evita frases genéricas. Máximo 450 palabras. No uses markdown, solo texto limpio.`
+        }]
+      })
+    });
+    const data = await resp.json();
+    const text = data.content?.[0]?.text || 'Error al generar. Inténtalo de nuevo.';
+    document.getElementById('resultText').textContent = text;
+    res.style.display = 'block';
+    res.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  } catch (e) {
+    document.getElementById('resultText').textContent = 'Error de conexión. Por favor, inténtalo de nuevo.';
+    res.style.display = 'block';
+  }
+  load.style.display = 'none';
+  btn.disabled = false;
+}
+
+function copyText() {
+  const t = document.getElementById('resultText').textContent;
+  navigator.clipboard.writeText(t).then(() => {
+    const b = document.querySelector('.copy-btn');
+    b.textContent = '✓ Copiado';
+    setTimeout(() => b.textContent = 'Copiar texto', 2000);
+  });
+}
+
+/* ─── FAQ ───────────────────────────────────── */
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  item.classList.toggle('open');
+}
+
+/* ─── CHECKOUT PLACEHOLDER ──────────────────── */
+function showCheckout() {
+  alert('💳 Aquí conectarías Stripe o LemonSqueezy.\nRedirige a tu página de pago.');
+}
+
+/* ─── SCROLL ANIMATIONS ─────────────────────── */
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+/* ─── STATS COUNTER ─────────────────────────── */
+function animateCounters() {
+  document.querySelectorAll('.stat-n').forEach(el => {
+    const text = el.textContent;
+    const num = parseFloat(text.replace(/[^0-9.]/g,''));
+    const suffix = text.replace(/[0-9.]/g,'');
+    if (isNaN(num)) return;
+    let start = 0; const dur = 1500; const step = 16;
+    const inc = num / (dur / step);
+    const timer = setInterval(() => {
+      start = Math.min(start + inc, num);
+      const display = Number.isInteger(num) ? Math.floor(start) : start.toFixed(1);
+      el.textContent = '+' === suffix[0] ? '+' + display + suffix.slice(1) : display + suffix;
+      if (start >= num) clearInterval(timer);
+    }, step);
+  });
+}
+const heroObs = new IntersectionObserver((entries) => {
+  if (entries[0].isIntersecting) { animateCounters(); heroObs.disconnect(); }
+}, { threshold: 0.5 });
+const statsEl = document.querySelector('.hero-stats');
+if (statsEl) heroObs.observe(statsEl);
+</script>
+</body>
+</html>
